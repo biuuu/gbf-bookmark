@@ -4,7 +4,7 @@ const cmjs = require('rollup-plugin-commonjs')
 const banner = `// ==UserScript==
 // @name         碧蓝幻想书签
 // @namespace    https://github.com/biuuu/gbf-bookmark
-// @version      0.0.1
+// @version      0.0.2
 // @description  none
 // @icon         http://game.granbluefantasy.jp/favicon.ico
 // @author       biuuu
