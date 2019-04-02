@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         碧蓝幻想书签
 // @namespace    https://github.com/biuuu/gbf-bookmark
-// @version      0.0.1
+// @version      0.0.2
 // @description  none
 // @icon         http://game.granbluefantasy.jp/favicon.ico
 // @author       biuuu
@@ -55,7 +55,7 @@
     index: 10,
     background: '#eee3c8'
   }];
-  const css = "\n#gbf-bookmark-lacia {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 2px;\n  height: 100%;\n  z-index: 9999999;\n  left: -96px;\n  pointer-events: none;\n  transition: left 0.1s;\n}\n#gbf-bookmark-lacia:hover {\n  left: 0;\n}\n#gbf-bookmark-lacia:hover .bookmark-item-lacia {\n  box-shadow: none;\n}\n.bookmark-item-lacia {\n  width: 100%;\n  height: 40px;\n  line-height: 40px;\n  padding-left: 10px;\n  box-sizing: border-box;\n  display: block;\n  position: relative;\n  pointer-events: auto;\n}\na.bookmark-item-lacia {\n  width: 100px;\n  background-color: #fff;\n  text-decoration: none;\n  white-space: nowrap;\n  color: #000;\n  font-size: 14px;\n  font-family: \"Microsoft JHengHei\", \"Microsoft YaHei\";\n  font-weight: 100;\n  cursor: pointer;\n  pointer-events: auto;\n  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);\n}\n.bookmark-item-lacia>div {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  height: 100%;\n}\na.bookmark-item-lacia:hover {\n  mix-blend-mode: multiply;\n}\na.bookmark-item-lacia:before, a.bookmark-item-lacia:after {\n\tcontent: '';\n\tposition: absolute;\n\tleft: 0;\n\tbox-shadow: 0 0 10px rgba(0,0,0,0.35);\n\tborder-radius: 50%;\n\twidth: 100%;\n\theight: 20px;\n\tdisplay: none;\n}\na.bookmark-item-lacia:before {\n\tdisplay: block;\n\ttop: 0px;\n\tclip: rect(-40px auto 0 auto);\n}\na.bookmark-item-lacia:after {\n\tdisplay: block;\n\tbottom: 0px;\n\tclip: rect(20px auto 40px auto);\n}\n";
+  const css = "\n#gbf-bookmark-lacia {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 2px;\n  height: 100%;\n  z-index: 9999999;\n  left: -96px;\n  pointer-events: none;\n  transition: left 0.1s;\n}\n#gbf-bookmark-lacia:hover {\n  left: 0;\n}\n#gbf-bookmark-lacia:hover .bookmark-item-lacia {\n  box-shadow: none;\n}\n.bookmark-item-lacia {\n  width: 20px;\n  height: 40px;\n  line-height: 40px;\n  padding-left: 10px;\n  box-sizing: border-box;\n  display: block;\n  position: relative;\n  pointer-events: auto;\n}\na.bookmark-item-lacia {\n  width: 100px;\n  background-color: #fff;\n  text-decoration: none;\n  white-space: nowrap;\n  color: #000;\n  font-size: 14px;\n  font-family: \"Microsoft JHengHei\", \"Microsoft YaHei\";\n  font-weight: 100;\n  cursor: pointer;\n  pointer-events: auto;\n  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);\n  transition: all 0.3s;\n}\n.bookmark-item-lacia>div {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  height: 100%;\n}\na.bookmark-item-lacia:hover {\n  filter: brightness(0.9);\n}\na.bookmark-item-lacia:active {\n  filter: brightness(0.8);\n  mix-blend-mode: multiply;\n}\na.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {\n  display: none;\n}\na.bookmark-item-lacia:before, a.bookmark-item-lacia:after {\n\tcontent: '';\n\tposition: absolute;\n\tleft: 0;\n\tbox-shadow: 0 0 10px rgba(0,0,0,0.35);\n\tborder-radius: 50%;\n\twidth: 100%;\n\theight: 20px;\n\tdisplay: none;\n}\na.bookmark-item-lacia:before {\n\tdisplay: block;\n\ttop: 0px;\n\tclip: rect(-40px auto 0 auto);\n}\na.bookmark-item-lacia:after {\n\tdisplay: block;\n\tbottom: 0px;\n\tclip: rect(20px auto 40px auto);\n}\n";
 
   const fontColor = rgb => {
     let str = rgb.slice(1);
