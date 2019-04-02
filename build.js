@@ -1,5 +1,4 @@
 const babel = require('rollup-plugin-babel')
-const cmjs = require('rollup-plugin-commonjs')
 
 const banner = `// ==UserScript==
 // @name         碧蓝幻想书签
@@ -17,13 +16,10 @@ const banner = `// ==UserScript==
 module.exports = {
   input: 'main.js',
   plugins: [
-    cmjs(),
     babel({
       exclude: 'node_modules/**',
       presets: [['@babel/preset-env', {
         modules: false,
-        useBuiltIns: 'usage',
-        corejs: 3,
         targets: '> 3%'
       }]]
     })
