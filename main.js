@@ -68,7 +68,7 @@ const css = `
   box-shadow: none;
 }
 .bookmark-item-lacia {
-  width: 100%;
+  width: 20px;
   height: 40px;
   line-height: 40px;
   padding-left: 10px;
@@ -89,6 +89,7 @@ a.bookmark-item-lacia {
   cursor: pointer;
   pointer-events: auto;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s;
 }
 .bookmark-item-lacia>div {
   text-overflow: ellipsis;
@@ -96,7 +97,14 @@ a.bookmark-item-lacia {
   height: 100%;
 }
 a.bookmark-item-lacia:hover {
+  filter: brightness(0.9);
+}
+a.bookmark-item-lacia:active {
+  filter: brightness(0.8);
   mix-blend-mode: multiply;
+}
+a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
+  display: none;
 }
 a.bookmark-item-lacia:before, a.bookmark-item-lacia:after {
 	content: '';
