@@ -8,7 +8,7 @@
 // @match        *://game.granbluefantasy.jp/*
 // @match        *://gbf.game.mbga.jp/*
 // @run-at       document-body
-// @updateURL    https://biuuu.github.io/gbf-markbook/gbf-markbook.user.js
+// @updateURL    https://biuuu.github.io/gbf-bookmark/gbf-bookmark.user.js
 // @supportURL   https://github.com/biuuu/gbf-bookmark/issues
 // ==/UserScript==
 (function () {
