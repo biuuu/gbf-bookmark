@@ -1,28 +1,10 @@
 let data = {
   list : [
     {
-      url: '#quest/supporter/739901/1/0/10308',
-      name: '当前活动',
-      index: 12,
-      background: '#ff972d'
-    },
-    {
       url: '#mypage',
       name: '首页',
       index: 3,
       background: '#297fc8'
-    },
-    {
-      url: 'reload',
-      name: '刷新',
-      index: 18,
-      background: '#5fc829'
-    },
-    {
-      url: 'back',
-      name: '后退',
-      index: 16,
-      background: '#FFEB3B'
     },
     {
       url: '#quest/assist',
@@ -47,6 +29,24 @@ let data = {
       name: 'SIDE STORY',
       index: 10,
       background: '#eee3c8'
+    },
+    {
+      url: '#arcarum2',
+      name: '塔罗首页',
+      index: 12,
+      background: '#ff972d'
+    },
+    {
+      url: 'back',
+      name: '后退',
+      index: 16,
+      background: '#FFEB3B'
+    },
+    {
+      url: 'reload',
+      name: '刷新',
+      index: 18,
+      background: '#5fc829'
     }
   ]
 }

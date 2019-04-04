@@ -1,5 +1,7 @@
 import { randomColor, setIndex, renderAll, saveData } from './utils'
 import data from './data'
+import config from './config';
+import { applyConfig, saveConfig } from './config'
 
 export default function () {
   const tabs = document.querySelectorAll('#gbf-bookmark-setting .tab-bookmark-setting')
@@ -63,11 +65,10 @@ export default function () {
   })
 
   btnSaveTag.addEventListener('click', function () {
-    const name = iptName.value
     const url = iptUrl.value
+    const name = iptName.value || url.replace(/^#/, '')
     if (!url.trim()) return alert('缺少书签地址')
     const background = iptBgcolor.value
-    console.log(background)
     const index = iptIndex.value | 0
     if (tagModalStatus.type === 'add') {
       data.list.push({ name, url, background, index })
@@ -98,6 +99,21 @@ export default function () {
       renderAll()
       saveData()
     }
+  })
+
+  const btnSaveSetting = document.querySelector('#btn-save-setting')
+  const iptPosition = document.getElementById('ipt-position-bookmark')
+  const iptHidedelay = document.getElementById('ipt-hidedelay-bookmark')
+  const iptMargin = document.getElementById('ipt-margin-bookmark')
+  const iptAnimation = document.getElementById('ipt-animation-bookmark')
+  btnSaveSetting.addEventListener('click', function () {
+    config.position = iptPosition.value
+    config.hideDelay = iptHidedelay.value | 0
+    config.margin = iptMargin.value | 0
+    config.animation = iptAnimation.value === 'open'
+    applyConfig()
+    saveConfig()
+    alert('保存成功')
   })
 
 }

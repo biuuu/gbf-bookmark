@@ -11,8 +11,18 @@ const css = `
   pointer-events: none;
   transition: left 0.1s, right 0.1s;
 }
+#gbf-bookmark-lacia.bookmark-remove-anime,
+#gbf-bookmark-lacia.bookmark-remove-anime a.bookmark-item-lacia {
+  transition: none;
+}
+#gbf-bookmark-lacia.autohide-bookmark {
+  opacity: 0;
+}
 #gbf-bookmark-lacia:hover {
   left: 0;
+}
+#gbf-bookmark-lacia.autohide-bookmark:hover {
+  opacity: 1;
 }
 #gbf-bookmark-lacia:hover .bookmark-item-lacia {
   box-shadow: none;
@@ -86,7 +96,7 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
 }
 #gbf-bookmark-lacia.bookmark-right {
   left: auto;
-  right: -96px;
+  right: -65px;
 }
 #gbf-bookmark-lacia.bookmark-right:hover {
   left: auto;
@@ -280,15 +290,16 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
 }
 .setting-option-bookmark {
   font-size: 9px;
-  text-align: center;
 }
 .setting-option-bookmark>div {
   margin: 10px 0;
+  padding: 0 10px;
 }
 .setting-option-bookmark .btn-bookmark {
-  background: #fff;
+  background: #03A9F4;
+  color: #fff;
 }
-.setting-box-bookmark .label-setting, .setting-box-bookmark .label-tagmodal {
+#gbf-bookmark-setting .label-setting, #gbf-bookmark-setting .label-tagmodal {
   background: #fff;
   height: 20px;
   line-height: 20px;
@@ -300,20 +311,27 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
 .ipt-setting-cont, .ipt-tagmodal-cont {
   display: inline-block;
 }
-.setting-box-bookmark .ipt-setting-bookmark, .setting-box-bookmark .ipt-tagmodal {
+.setting-option-bookmark .hint-bookmark {
+  display: block;
+  margin-top: 10px;
+  color: #777;
+  width: 188px;
+  font-weight: normal;
+}
+#gbf-bookmark-setting .ipt-setting-bookmark, #gbf-bookmark-setting .ipt-tagmodal {
   background: #fff;
   height: 20px;
   line-height: 20px;
-  padding: 0 8px;
+  padding: 0 0 0 8px;
   margin: 0;
   border: 0;
   width: 112px;
   color: #666;
 }
-.setting-box-bookmark .ipt-setting-bookmark::placeholder, .ipt-tagmodal::placeholder {
+#gbf-bookmark-setting .ipt-setting-bookmark::placeholder, .ipt-tagmodal::placeholder {
   color: #aaa;
 }
-.setting-box-bookmark .ipt-setting-bookmark:focus, .ipt-tagmodal:focus {
+#gbf-bookmark-setting .ipt-setting-bookmark:focus, .ipt-tagmodal:focus {
   outline: 0;
 }
 `

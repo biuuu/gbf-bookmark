@@ -25,8 +25,6 @@ const parentElmt = () => {
   return elmt
 }
 
-const delayTime = config.hideDelay * 1000
-
 const main = () => {
   try {
     const html = template(data.list)
@@ -35,22 +33,25 @@ const main = () => {
     const time = getTime()
     let hideTimer
     const delayHide = () => {
+      if (config.hideDelay <= 0) return
       clearTimeout(hideTimer)
       hideTimer = setTimeout(() => {
         container.style.opacity = 0
-      }, delayTime)
+      }, config.hideDelay * 1000)
     }
-    if (Date.now() - time > delayTime) {
+    if (Date.now() - time > config.hideDelay * 1000 && config.delayHide > 0) {
       container.style.opacity = 0
     } else {
       delayHide()
     }
     container.addEventListener('mouseenter', function () {
+      if (config.hideDelay <= 0) return
       recordTime()
       clearTimeout(hideTimer)
       container.style.opacity = 1
     })
     container.addEventListener('mouseleave', function () {
+      if (config.hideDelay <= 0) return
       recordTime()
       delayHide()
     })
