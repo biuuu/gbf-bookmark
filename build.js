@@ -3,12 +3,12 @@ const babel = require('rollup-plugin-babel')
 const banner = `// ==UserScript==
 // @name         碧蓝幻想书签
 // @namespace    https://github.com/biuuu/gbf-bookmark
-// @version      0.0.7
+// @version      0.0.8
 // @description  none
 // @author       biuuu
 // @match        *://game.granbluefantasy.jp/*
 // @match        *://gbf.game.mbga.jp/*
-// @run-at       document-body
+// @run-at       document-start
 // @updateURL    https://biuuu.github.io/gbf-bookmark/gbf-bookmark.user.js
 // @supportURL   https://github.com/biuuu/gbf-bookmark/issues
 // ==/UserScript==`
