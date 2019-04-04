@@ -14,7 +14,7 @@ const banner = `// ==UserScript==
 // @supportURL   https://github.com/biuuu/gbf-bookmark/issues
 // ==/UserScript==`
 module.exports = {
-  input: 'main.js',
+  input: 'src/main.js',
   plugins: [
     babel({
       exclude: 'node_modules/**',
