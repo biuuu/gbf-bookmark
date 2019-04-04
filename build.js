@@ -3,7 +3,7 @@ const babel = require('rollup-plugin-babel')
 const banner = `// ==UserScript==
 // @name         碧蓝幻想书签
 // @namespace    https://github.com/biuuu/gbf-bookmark
-// @version      0.0.4
+// @version      0.0.5
 // @description  none
 // @author       biuuu
 // @match        *://game.granbluefantasy.jp/*
@@ -19,7 +19,7 @@ module.exports = {
       exclude: 'node_modules/**',
       presets: [['@babel/preset-env', {
         modules: false,
-        targets: '> 3%'
+        targets: 'since 2015'
       }]]
     })
   ],
