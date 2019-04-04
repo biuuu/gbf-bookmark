@@ -11,6 +11,15 @@ const css = `
   pointer-events: none;
   transition: left 0.1s, right 0.1s;
 }
+#show-setting-bookmark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  z-index: 10000000;
+  cursor: pointer;
+}
 #gbf-bookmark-lacia.bookmark-remove-anime,
 #gbf-bookmark-lacia.bookmark-remove-anime a.bookmark-item-lacia {
   transition: none;
@@ -26,6 +35,32 @@ const css = `
 }
 #gbf-bookmark-lacia:hover .bookmark-item-lacia {
   box-shadow: none;
+}
+#gbf-bookmark-lacia.size-1 .bookmark-item-lacia {
+  width: 26px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 11px;
+}
+#gbf-bookmark-lacia.size-1 a.bookmark-item-lacia {
+  width: 85px;
+  font-size: 11px;
+}
+#gbf-bookmark-lacia.size-1:hover a.bookmark-item-lacia:nth-child(2n) {
+  width: 87px;
+}
+#gbf-bookmark-lacia.size-3 .bookmark-item-lacia {
+  width: 18px;
+  height: 20px;
+  line-height: 20px;
+  padding-left: 6px;
+}
+#gbf-bookmark-lacia.size-3 a.bookmark-item-lacia {
+  width: 60px;
+  font-size: 7px;
+}
+#gbf-bookmark-lacia.size-3:hover a.bookmark-item-lacia:nth-child(2n) {
+  width: 62px;
 }
 .bookmark-item-lacia {
   width: 20px;

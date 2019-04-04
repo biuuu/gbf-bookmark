@@ -26,6 +26,7 @@ export default function () {
   const setting = document.querySelector('#gbf-bookmark-setting')
   const closeBtn = document.querySelector('#btn-close-bookmark')
   const bookmark = document.querySelector('#gbf-bookmark-lacia')
+  const btnShowSetting = document.querySelector('#show-setting-bookmark')
   bookmark.oncontextmenu = function (e) {
     e.preventDefault()
   }
@@ -34,10 +35,13 @@ export default function () {
       showSetting()
     }
   })
+  btnShowSetting.addEventListener('click', function () {
+    showSetting()
+  })
   const hideSetting = () => {
     setting.classList.remove('show-setting')
   }
-  const showSetting = () => setting.classList.add('show-setting')
+  const showSetting = () => setting.classList.toggle('show-setting')
   closeBtn.addEventListener('click', hideSetting)
 
   const btnModalClose = document.querySelector('#btn-close-tagmodal')
@@ -106,11 +110,13 @@ export default function () {
   const iptHidedelay = document.getElementById('ipt-hidedelay-bookmark')
   const iptMargin = document.getElementById('ipt-margin-bookmark')
   const iptAnimation = document.getElementById('ipt-animation-bookmark')
+  const iptSize = document.getElementById('ipt-size-bookmark')
   btnSaveSetting.addEventListener('click', function () {
     config.position = iptPosition.value
     config.hideDelay = iptHidedelay.value | 0
     config.margin = iptMargin.value | 0
     config.animation = iptAnimation.value === 'open'
+    config.size = iptSize.value | 0
     applyConfig()
     saveConfig()
     alert('保存成功')

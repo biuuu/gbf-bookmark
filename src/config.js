@@ -2,7 +2,8 @@ const config = {
   position: 'left',
   hideDelay: 10,
   animation: true,
-  margin: 2
+  margin: 4,
+  size: 2
 }
 
 const getLocalConfig = () => {
@@ -44,15 +45,20 @@ const applyConfig = () => {
   } else {
     cont.classList.remove('bookmark-remove-anime')
   }
+  cont.classList.remove('size-1', 'size-2', 'size-3')
+  cont.classList.add(`size-${config.size}`)
   let styleTag = document.getElementById('style-gbf-bookmark')
   if (!styleTag) {
     styleTag = document.createElement('style')
     styleTag.id = 'style-gbf-bookmark'
     document.body.appendChild(styleTag)
   }
-  let left = 67 - config.margin
-  if (left > 67) left = 67
-  if (left < 37) left = 37
+  let width = 67
+  if (config.size === 1) width = 84
+  if (config.size === 3) width = 59
+  let left = width - config.margin
+  if (left > width) left = width
+  if (left < width - 30) left = width - 30
   styleTag.innerHTML = `
   body #gbf-bookmark-lacia${config.position === 'right' ? '.bookmark-right' : ''} {
     ${config.position}: -${left}px;
@@ -65,10 +71,12 @@ const initIpt = () => {
   const iptHidedelay = document.getElementById('ipt-hidedelay-bookmark')
   const iptMargin = document.getElementById('ipt-margin-bookmark')
   const iptAnimation = document.getElementById('ipt-animation-bookmark')
+  const iptSize = document.getElementById('ipt-size-bookmark')
   iptPosition.value = config.position
   iptHidedelay.value = config.hideDelay
   iptMargin.value = config.margin
   iptAnimation.value = config.animation ? 'open' : 'close'
+  iptSize.value = config.size
 }
 
 const saveConfig = () => {

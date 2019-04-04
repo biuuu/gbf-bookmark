@@ -4,6 +4,7 @@ import css from './style'
 export default function tempalte () {
   const html = `
   <style>${css}</style>
+  <div id="show-setting-bookmark"></div>
   <div id="gbf-bookmark-lacia">${renderList()}</div>
   <div id="gbf-bookmark-setting" class="paper-shadow dark-shadow">
   <div class="tab-bookmark-setting active-bookmark paper-shadow">书签</div>
@@ -34,6 +35,16 @@ export default function tempalte () {
       <select id="ipt-animation-bookmark" class="ipt-setting-bookmark">
         <option value="open">启用</option>
         <option value="close">禁止</option>
+      </select>
+      </div>
+    </div>
+    <div>
+      <span class="label-setting paper-shadow2">尺寸</span>
+      <div class="paper-shadow2 ipt-setting-cont">
+      <select id="ipt-size-bookmark" class="ipt-setting-bookmark">
+        <option value="1">大</option>
+        <option value="2">中</option>
+        <option value="3">小</option>
       </select>
       </div>
     </div>
