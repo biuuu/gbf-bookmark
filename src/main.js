@@ -20,9 +20,10 @@ const getTime = () => {
 }
 
 const parentElmt = () => {
-  let elmt = document.getElementById('mobage-game-container')
-  if (!elmt) elmt = document.body
-  return elmt
+  // let elmt = document.getElementById('mobage-game-container')
+  // if (!elmt) elmt = document.body
+  // return elmt
+  return document.body
 }
 
 const main = () => {
@@ -59,6 +60,18 @@ const main = () => {
     } else {
       delayHide()
     }
+    setTimeout(() => {
+      try {
+        const elemt1 = document.getElementById('show-setting-bookmark')
+        const elemt2 = document.getElementById('gbf-bookmark-lacia')
+        const elemt3 = document.getElementById('gbf-bookmark-setting')
+        elemt1.style.zoom = deviceRatio
+        elemt2.style.zoom = deviceRatio
+        elemt3.style.zoom = deviceRatio
+      } catch (e) {
+        console.error(e)
+      }
+    }, 100)
   } catch (e) {
     console.error(e)
   }
