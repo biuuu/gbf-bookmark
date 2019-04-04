@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         碧蓝幻想书签
 // @namespace    https://github.com/biuuu/gbf-bookmark
-// @version      0.0.6
+// @version      0.0.7
 // @description  none
 // @author       biuuu
 // @match        *://game.granbluefantasy.jp/*
@@ -452,9 +452,10 @@
   };
 
   var parentElmt = function parentElmt() {
-    var elmt = document.getElementById('mobage-game-container');
-    if (!elmt) elmt = document.body;
-    return elmt;
+    // let elmt = document.getElementById('mobage-game-container')
+    // if (!elmt) elmt = document.body
+    // return elmt
+    return document.body;
   };
 
   var main = function main() {
@@ -493,6 +494,19 @@
       } else {
         delayHide();
       }
+
+      setTimeout(function () {
+        try {
+          var elemt1 = document.getElementById('show-setting-bookmark');
+          var elemt2 = document.getElementById('gbf-bookmark-lacia');
+          var elemt3 = document.getElementById('gbf-bookmark-setting');
+          elemt1.style.zoom = deviceRatio;
+          elemt2.style.zoom = deviceRatio;
+          elemt3.style.zoom = deviceRatio;
+        } catch (e) {
+          console.error(e);
+        }
+      }, 100);
     } catch (e) {
       console.error(e);
     }
