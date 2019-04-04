@@ -58,7 +58,7 @@ const applyConfig = () => {
   if (config.size === 3) width = 59
   let left = width - config.margin
   if (left > width) left = width
-  if (left < width - 30) left = width - 30
+  if (left < 0) left = 0
   styleTag.innerHTML = `
   body #gbf-bookmark-lacia${config.position === 'right' ? '.bookmark-right' : ''} {
     ${config.position}: -${left}px;

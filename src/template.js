@@ -26,7 +26,7 @@ export default function tempalte () {
     <div>
       <span class="label-setting paper-shadow2">边距</span>
       <div class="paper-shadow2 ipt-setting-cont">
-        <input id="ipt-margin-bookmark" class="ipt-setting-bookmark" value="2" type="number" min="0" max="30">
+        <input id="ipt-margin-bookmark" class="ipt-setting-bookmark" value="2" type="number" min="0" max="100">
       </div>
     </div>
     <div>
@@ -51,7 +51,7 @@ export default function tempalte () {
     <div>
       <span class="label-setting paper-shadow2">自动隐藏</span>
       <div class="paper-shadow2 ipt-setting-cont">
-        <input id="ipt-hidedelay-bookmark" class="ipt-setting-bookmark" value="10" type="number" min="-1" max="30">
+        <input id="ipt-hidedelay-bookmark" class="ipt-setting-bookmark" value="10" type="number" min="-1" max="60">
       </div>
       <span class="hint-bookmark">等待指定秒数后自动隐藏，设为0直接隐藏，设为-1则始终显示</span>
     </div>
