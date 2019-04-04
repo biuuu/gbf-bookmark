@@ -39,11 +39,7 @@ const main = () => {
         container.style.opacity = 0
       }, config.hideDelay * 1000)
     }
-    if (Date.now() - time > config.hideDelay * 1000 && config.delayHide > 0) {
-      container.style.opacity = 0
-    } else {
-      delayHide()
-    }
+
     container.addEventListener('mouseenter', function () {
       if (config.hideDelay <= 0) return
       recordTime()
@@ -58,6 +54,11 @@ const main = () => {
     event()
     initIpt()
     applyConfig()
+    if (Date.now() - time > config.hideDelay * 1000 && config.hideDelay > 0) {
+      container.style.opacity = 0
+    } else {
+      delayHide()
+    }
   } catch (e) {
     console.error(e)
   }
