@@ -11,6 +11,15 @@ const css = `
   pointer-events: none;
   transition: left 0.1s, right 0.1s;
 }
+#gbf-bookmark-lacia.align-left-bookmark .bookmark-item-lacia {
+  text-align: left;
+}
+#gbf-bookmark-lacia.align-center-bookmark .bookmark-item-lacia {
+  text-align: center;
+}
+#gbf-bookmark-lacia.align-right-bookmark .bookmark-item-lacia {
+  text-align: right;
+}
 #show-setting-bookmark {
   position: fixed;
   top: 0;
@@ -28,9 +37,9 @@ const css = `
   opacity: 0;
 }
 #gbf-bookmark-lacia.full-bookmark a.bookmark-item-lacia:nth-child(2n) {
-  padding-right: 2px;
+  padding-right: 10px;
 }
-#gbf-bookmark-lacia:hover {
+#gbf-bookmark-lacia:not(.full-bookmark):hover {
   left: 0;
 }
 #gbf-bookmark-lacia.autohide-bookmark:hover {
@@ -46,7 +55,7 @@ const css = `
   padding-left: 11px;
 }
 #gbf-bookmark-lacia.size-1 a.bookmark-item-lacia {
-  width: 77px;
+  width: 69x;
   font-size: 11px;
 }
 #gbf-bookmark-lacia.size-3 .bookmark-item-lacia {
@@ -56,27 +65,28 @@ const css = `
   padding-left: 6px;
 }
 #gbf-bookmark-lacia.size-3 a.bookmark-item-lacia {
-  width: 52px;
+  width: 44px;
   font-size: 7px;
 }
 .bookmark-item-lacia {
-  width: 20px;
+  width: 10px;
   height: 24px;
   line-height: 24px;
   padding-left: 8px;
+  padding-right: 8px;
   box-sizing: content-box;
   display: block;
   position: relative;
   pointer-events: auto;
 }
 #gbf-bookmark-lacia:hover a.bookmark-item-lacia:nth-child(2n) {
-  padding-right: 2px;
+  padding-right: 10px;
 }
 a.bookmark-item-lacia:focus {
   outline: 0;
 }
 a.bookmark-item-lacia {
-  width: 60px;
+  width: 52px;
   background-color: #fff;
   text-decoration: none;
   white-space: nowrap;

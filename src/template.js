@@ -37,6 +37,16 @@ export default function tempalte () {
       </div>
     </div>
     <div>
+      <span class="label-setting paper-shadow2">文字</span>
+      <div class="paper-shadow2 ipt-setting-cont">
+      <select id="ipt-align-bookmark" class="ipt-setting-bookmark">
+        <option value="left">左对齐</option>
+        <option value="center">居中</option>
+        <option value="right">右对齐</option>
+      </select>
+      </div>
+    </div>
+    <div>
       <span class="label-setting paper-shadow2">动画</span>
       <div class="paper-shadow2 ipt-setting-cont">
       <select id="ipt-animation-bookmark" class="ipt-setting-bookmark">

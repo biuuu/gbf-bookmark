@@ -3,7 +3,8 @@ const config = {
   hideDelay: 10,
   animation: true,
   margin: 4,
-  size: 2
+  size: 2,
+  align: 'left'
 }
 
 const getLocalConfig = () => {
@@ -32,6 +33,8 @@ const applyConfig = () => {
   } else {
     cont.classList.add('bookmark-right')
   }
+  cont.classList.remove('align-left-bookmark', 'align-center-bookmark', 'align-right-bookmark')
+  cont.classList.add(`align-${config.align}-bookmark`)
   cont.classList.remove('autohide-bookmark', 'keep-bookmark', 'full-bookmark')
   cont.classList.remove('keep-bookmark')
   if (config.hideDelay === 0) {
@@ -74,11 +77,13 @@ const initIpt = () => {
   const iptMargin = document.getElementById('ipt-margin-bookmark')
   const iptAnimation = document.getElementById('ipt-animation-bookmark')
   const iptSize = document.getElementById('ipt-size-bookmark')
+  const iptAlign = document.getElementById('ipt-align-bookmark')
   iptPosition.value = config.position
   iptHidedelay.value = config.hideDelay
   iptMargin.value = config.margin
   iptAnimation.value = config.animation ? 'open' : 'close'
   iptSize.value = config.size
+  iptAlign.value = config.align
 }
 
 const saveConfig = () => {

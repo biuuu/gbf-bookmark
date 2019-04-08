@@ -110,12 +110,14 @@ export default function () {
   const iptMargin = document.getElementById('ipt-margin-bookmark')
   const iptAnimation = document.getElementById('ipt-animation-bookmark')
   const iptSize = document.getElementById('ipt-size-bookmark')
+  const iptAlign = document.getElementById('ipt-align-bookmark')
   btnSaveSetting.addEventListener('click', function () {
     config.position = iptPosition.value
     config.hideDelay = iptHidedelay.value | 0
     config.margin = iptMargin.value | 0
     config.animation = iptAnimation.value === 'open'
     config.size = iptSize.value | 0
+    config.align = iptAlign.value
     applyConfig()
     saveConfig()
     alert('保存成功')
