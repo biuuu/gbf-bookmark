@@ -27,6 +27,9 @@ const css = `
 #gbf-bookmark-lacia.autohide-bookmark {
   opacity: 0;
 }
+#gbf-bookmark-lacia.full-bookmark a.bookmark-item-lacia:nth-child(2n) {
+  padding-right: 2px;
+}
 #gbf-bookmark-lacia:hover {
   left: 0;
 }
@@ -43,11 +46,8 @@ const css = `
   padding-left: 11px;
 }
 #gbf-bookmark-lacia.size-1 a.bookmark-item-lacia {
-  width: 85px;
+  width: 77px;
   font-size: 11px;
-}
-#gbf-bookmark-lacia.size-1:hover a.bookmark-item-lacia:nth-child(2n) {
-  width: 87px;
 }
 #gbf-bookmark-lacia.size-3 .bookmark-item-lacia {
   width: 18px;
@@ -56,30 +56,27 @@ const css = `
   padding-left: 6px;
 }
 #gbf-bookmark-lacia.size-3 a.bookmark-item-lacia {
-  width: 60px;
+  width: 52px;
   font-size: 7px;
-}
-#gbf-bookmark-lacia.size-3:hover a.bookmark-item-lacia:nth-child(2n) {
-  width: 62px;
 }
 .bookmark-item-lacia {
   width: 20px;
   height: 24px;
   line-height: 24px;
   padding-left: 8px;
-  box-sizing: border-box;
+  box-sizing: content-box;
   display: block;
   position: relative;
   pointer-events: auto;
 }
 #gbf-bookmark-lacia:hover a.bookmark-item-lacia:nth-child(2n) {
-  width: 70px;
+  padding-right: 2px;
 }
 a.bookmark-item-lacia:focus {
   outline: 0;
 }
 a.bookmark-item-lacia {
-  width: 68px;
+  width: 60px;
   background-color: #fff;
   text-decoration: none;
   white-space: nowrap;
@@ -91,7 +88,7 @@ a.bookmark-item-lacia {
   pointer-events: auto;
   z-index: 1;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s;
+  transition: left 0.3s, right 0.3s, box-shadow 0.3s, filter 0.3s;
 }
 .bookmark-item-lacia>div {
   text-overflow: ellipsis;
@@ -145,7 +142,7 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
 }
 #gbf-bookmark-setting {
   position: fixed;
-  z-index: 9999998;
+  z-index: 9999999;
   width: 280px;
   padding-bottom: 30px;
   min-height: 290px;
