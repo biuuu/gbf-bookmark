@@ -32,12 +32,14 @@ const applyConfig = () => {
   } else {
     cont.classList.add('bookmark-right')
   }
-  cont.classList.remove('autohide-bookmark')
+  cont.classList.remove('autohide-bookmark', 'keep-bookmark', 'full-bookmark')
   cont.classList.remove('keep-bookmark')
   if (config.hideDelay === 0) {
     cont.classList.add('autohide-bookmark')
-  } else if (config.hideDelay < 0) {
+  } else if (config.hideDelay === -1) {
     cont.classList.add('keep-bookmark')
+  } else if (config.hideDelay === -2) {
+    cont.classList.add('full-bookmark')
   }
   cont.style.opacity = null
   if (!config.animation) {
