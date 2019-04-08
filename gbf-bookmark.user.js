@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         碧蓝幻想书签
 // @namespace    https://github.com/biuuu/gbf-bookmark
-// @version      0.1.0
+// @version      0.1.1
 // @description  none
 // @author       biuuu
 // @match        *://game.granbluefantasy.jp/*
@@ -464,6 +464,7 @@
             initIpt();
             saveConfig();
             renderAll();
+            saveData();
             alert('导入成功');
           } catch (err) {
             console.error(err);
