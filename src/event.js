@@ -138,6 +138,7 @@ export default function () {
           initIpt()
           saveConfig()
           renderAll()
+          saveData()
           alert('导入成功')
         } catch (err) {
           console.error(err)
