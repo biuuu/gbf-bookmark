@@ -60,7 +60,7 @@ export default function tempalte () {
       <div class="paper-shadow2 ipt-setting-cont">
         <input id="ipt-hidedelay-bookmark" class="ipt-setting-bookmark" value="10" type="number" min="-1" max="60">
       </div>
-      <span class="hint-bookmark">等待指定秒数后自动隐藏，设为0直接隐藏，设为-1则始终显示</span>
+      <span class="hint-bookmark">等待指定秒数后自动隐藏，设为0直接隐藏，设为-1则始终显示。（这里的隐藏不是指停靠到边缘，而是指停靠到边缘后再隐藏）</span>
     </div>
     <div><div class="btn-bookmark paper-shadow2" id="btn-save-setting">保存</div></div>
   </div>
