@@ -227,6 +227,27 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
   padding: 2px 8px;
   color: #fff;
   background-color: #8BC34A;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.btn-bookmark.btn-add:after,.btn-bookmark.btn-add:before {
+  display: none;
+}
+.btn-bookmark.btn-add:hover {
+  filter: brightness(0.95);
+}
+.btn-bookmark.btn-add:active {
+  filter: brightness(0.9);
+}
+.toolbar-bookmark {
+  display: flex;
+  justify-content: space-between;
+}
+.toolbar-bookmark .toolbar-right {
+  display: flex;
+}
+.toolbar-bookmark .toolbar-right .btn-bookmark.btn-add {
+  background: #03A9F4;
+  margin-left: 10px;
 }
 .setting-box-bookmark {
   padding: 10px;
@@ -322,6 +343,9 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
 #gbf-bookmark-tagmodal .btn-bookmark {
   margin: 0 10px;
   background: #fff;
+}
+#gbf-bookmark-tagmodal .btn-bookmark:hover {
+  background: #f3f3f3;
 }
 .setting-option-bookmark {
   font-size: 9px;

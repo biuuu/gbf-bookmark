@@ -105,4 +105,15 @@ const saveData = () => {
   }
 }
 
-export { renderTag, fontColor, renderList, randomColor, setIndex, renderAll, saveData }
+const tryDownload = (content, filename) => {
+  const eleLink = document.createElement('a')
+  eleLink.download = filename
+  eleLink.style.display = 'none'
+  const blob = new Blob([content], { type: 'text/csv' })
+  eleLink.href = URL.createObjectURL(blob)
+  document.body.appendChild(eleLink)
+  eleLink.click()
+  document.body.removeChild(eleLink)
+}
+
+export { renderTag, fontColor, renderList, randomColor, setIndex, renderAll, saveData, tryDownload }

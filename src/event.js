@@ -1,7 +1,6 @@
-import { randomColor, setIndex, renderAll, saveData } from './utils'
+import { randomColor, setIndex, renderAll, saveData, tryDownload } from './utils'
 import data from './data'
-import config from './config';
-import { applyConfig, saveConfig } from './config'
+import config, { applyConfig, initIpt, saveConfig } from './config';
 
 export default function () {
   const tabs = document.querySelectorAll('#gbf-bookmark-setting .tab-bookmark-setting')
@@ -122,4 +121,39 @@ export default function () {
     alert('保存成功')
   })
 
+  const btnImport = document.getElementById('btn-import-bookmark')
+  const btnExport = document.getElementById('btn-export-bookmark')
+  const iptImport = document.getElementById('ipt-import-bookmark')
+
+  iptImport.addEventListener('change', function () {
+    const files = this.files
+    if (files.length) {
+      var reader = new FileReader()
+      reader.onload = (e => {
+        try {
+          const obj = JSON.parse(e.target.result)
+          data.list = obj.data
+          Object.assign(config, obj.config)
+          applyConfig()
+          initIpt()
+          saveConfig()
+          renderAll()
+          alert('导入成功')
+        } catch (err) {
+          console.error(err)
+          alert(`导入失败 ${err.message}`)
+        }
+      })
+      reader.readAsText(files[0])
+    }
+  })
+
+  btnExport.addEventListener('click', function () {
+    try {
+      const obj = { data: data.list, config: config }
+      tryDownload(JSON.stringify(obj, null, 2), 'GBF-Bookmark-Config.json')
+    } catch (e) {
+      console.error(e)
+    }
+  })
 }

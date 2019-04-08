@@ -10,7 +10,14 @@ export default function tempalte () {
   <div class="tab-bookmark-setting active-bookmark paper-shadow">书签</div>
   <div class="tab-bookmark-setting option-bookmark paper-shadow">选项</div>
   <div class="setting-box-bookmark box-active">
+    <div class="toolbar-bookmark">
     <div id="btn-add-bookmark" class="btn-bookmark btn-add paper-shadow2">添加</div>
+    <div class="toolbar-right">
+    <input type="file" style="display:none" id="ipt-import-bookmark" accept=".json">
+    <label for="ipt-import-bookmark" id="btn-import-bookmark" class="btn-bookmark btn-add paper-shadow2">导入</label>
+    <div id="btn-export-bookmark" class="btn-bookmark btn-add paper-shadow2">导出</div>
+    </div>
+    </div>
     <div id="bookmark-cont">${renderTag()}</div>
   </div>
   <div class="setting-box-bookmark setting-option-bookmark">
