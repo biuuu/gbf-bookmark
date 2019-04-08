@@ -39,6 +39,12 @@ const css = `
 #gbf-bookmark-lacia.full-bookmark a.bookmark-item-lacia:nth-child(2n) {
   padding-right: 10px;
 }
+#gbf-bookmark-lacia.not-mixed-bookmark a.bookmark-item-lacia:nth-child(2n){
+  padding-right: 8px;
+}
+#gbf-bookmark-lacia.not-mixed-bookmark:hover a.bookmark-item-lacia:nth-child(2n){
+  padding-right: 8px;
+}
 #gbf-bookmark-lacia:not(.full-bookmark):hover {
   left: 0;
 }
@@ -356,6 +362,8 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
 }
 .setting-option-bookmark {
   font-size: 9px;
+  max-height: 320px;
+  overflow: auto;
 }
 .setting-option-bookmark>div {
   margin: 10px 0;
@@ -373,6 +381,11 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
   width: 40px;
   display: inline-block;
   margin-right: 10px;
+}
+#gbf-bookmark-setting .label-setting,
+#gbf-bookmark-setting .ipt-setting-bookmark {
+  height: 18px;
+  line-height: 18px;
 }
 .ipt-setting-cont, .ipt-tagmodal-cont {
   display: inline-block;

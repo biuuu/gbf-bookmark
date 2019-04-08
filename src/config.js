@@ -4,7 +4,8 @@ const config = {
   animation: true,
   margin: 4,
   size: 2,
-  align: 'left'
+  align: 'left',
+  mixed: 'yes'
 }
 
 const getLocalConfig = () => {
@@ -32,6 +33,11 @@ const applyConfig = () => {
     cont.classList.remove('bookmark-right')
   } else {
     cont.classList.add('bookmark-right')
+  }
+  if (config.mixed === 'yes') {
+    cont.classList.remove('not-mixed-bookmark')
+  } else {
+    cont.classList.add('not-mixed-bookmark')
   }
   cont.classList.remove('align-left-bookmark', 'align-center-bookmark', 'align-right-bookmark')
   cont.classList.add(`align-${config.align}-bookmark`)
@@ -78,12 +84,14 @@ const initIpt = () => {
   const iptAnimation = document.getElementById('ipt-animation-bookmark')
   const iptSize = document.getElementById('ipt-size-bookmark')
   const iptAlign = document.getElementById('ipt-align-bookmark')
+  const iptMixed = document.getElementById('ipt-mixed-bookmark')
   iptPosition.value = config.position
   iptHidedelay.value = config.hideDelay
   iptMargin.value = config.margin
   iptAnimation.value = config.animation ? 'open' : 'close'
   iptSize.value = config.size
   iptAlign.value = config.align
+  iptMixed.value = config.mixed
 }
 
 const saveConfig = () => {

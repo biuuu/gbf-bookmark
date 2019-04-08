@@ -66,6 +66,15 @@ export default function tempalte () {
       </div>
     </div>
     <div>
+      <span class="label-setting paper-shadow2">对齐书签</span>
+      <div class="paper-shadow2 ipt-setting-cont">
+      <select id="ipt-mixed-bookmark" class="ipt-setting-bookmark">
+        <option value="no">是</option>
+        <option value="yes">否</option>
+      </select>
+      </div>
+    </div>
+    <div>
       <span class="label-setting paper-shadow2">自动隐藏</span>
       <div class="paper-shadow2 ipt-setting-cont">
         <input id="ipt-hidedelay-bookmark" class="ipt-setting-bookmark" value="10" type="number" min="-2" max="60">

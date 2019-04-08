@@ -111,6 +111,7 @@ export default function () {
   const iptAnimation = document.getElementById('ipt-animation-bookmark')
   const iptSize = document.getElementById('ipt-size-bookmark')
   const iptAlign = document.getElementById('ipt-align-bookmark')
+  const iptMixed = document.getElementById('ipt-mixed-bookmark')
   btnSaveSetting.addEventListener('click', function () {
     config.position = iptPosition.value
     config.hideDelay = iptHidedelay.value | 0
@@ -118,6 +119,7 @@ export default function () {
     config.animation = iptAnimation.value === 'open'
     config.size = iptSize.value | 0
     config.align = iptAlign.value
+    config.mixed = iptMixed.value
     applyConfig()
     saveConfig()
     alert('保存成功')
