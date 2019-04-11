@@ -61,7 +61,7 @@ const css = `
   padding-left: 11px;
 }
 #gbf-bookmark-lacia.size-1 a.bookmark-item-lacia {
-  width: 69x;
+  width: 69px;
   font-size: 11px;
 }
 #gbf-bookmark-lacia.size-3 .bookmark-item-lacia {
