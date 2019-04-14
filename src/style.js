@@ -85,6 +85,9 @@ const css = `
   position: relative;
   pointer-events: auto;
 }
+.bookmark-item-child {
+  display: none;
+}
 #gbf-bookmark-lacia:hover a.bookmark-item-lacia:nth-child(2n) {
   padding-right: 10px;
 }
@@ -284,6 +287,13 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
   position: absolute;
   left: 2px;
   top: 2px;
+  font-size: 6px;
+  padding: 0 2px;
+}
+.setting-box-bookmark .idx-tag-parent {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
   font-size: 6px;
   padding: 0 2px;
 }

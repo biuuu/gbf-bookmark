@@ -1,9 +1,11 @@
 const babel = require('rollup-plugin-babel')
+const { version } = require('./package.json')
+const json = require('rollup-plugin-json')
 
 const banner = `// ==UserScript==
 // @name         碧蓝幻想书签
 // @namespace    https://github.com/biuuu/gbf-bookmark
-// @version      0.1.5
+// @version      ${version}
 // @description  none
 // @author       biuuu
 // @match        *://game.granbluefantasy.jp/*
@@ -15,6 +17,7 @@ const banner = `// ==UserScript==
 module.exports = {
   input: 'src/main.js',
   plugins: [
+    json(),
     babel({
       exclude: 'node_modules/**',
       presets: [['@babel/preset-env', {

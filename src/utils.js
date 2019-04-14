@@ -38,6 +38,7 @@ const renderTag = () => {
     const color = item.color || fontColor(bg)
     html += `<div style="background-color:${bg};color:${color}"
     class="paper-shadow2 bookmark-tag"><div class="idx-tag"><span>${item.index}</span></div>
+    ${item.parent ? `<span class="idx-tag-parent">${item.parent}</span>` : ''}
     <span class="edit-tag" data-index="${index}">改</span><span class="delete-tag" data-index="${index}">删</span>
     ${item.name || 'NoName'}</div>`
   })
@@ -45,40 +46,76 @@ const renderTag = () => {
 }
 
 const renderList = () => {
-  let str = ''
+  let html = ''
+  let parentIds = []
   const bookmarks = data.list
   if (bookmarks.length) {
-    const indexList = bookmarks.map(item => item.index)
-    const maxIndex = Math.max(...indexList)
-    const list = new Array(maxIndex > 100 ? 100 : maxIndex).fill({})
-    indexList.forEach((tag, idx) => {
-      list[tag - 1] = bookmarks[idx]
-    })
-
-
-    list.forEach(item => {
-      if (item.url) {
-        const bg = item.background || '#297fc8'
-        const color = item.color || fontColor(bg)
-        if (item.url === 'reload') {
-          str += `<a style="background-color:${bg};color:${color}" class="bookmark-item-lacia paper-shadow" onclick="location.reload()"><div>${item.name || 'NoName'}</div></a>`
-        } else if (item.url === 'back') {
-          str += `<a style="background-color:${bg};color:${color}" class="bookmark-item-lacia paper-shadow" onclick="history.back()"><div>${item.name || 'NoName'}</div></a>`
-        } else if (item.url === 'forward') {
-          str += `<a style="background-color:${bg};color:${color}" class="bookmark-item-lacia paper-shadow" onclick="history.forward()"><div>${item.name || 'NoName'}</div></a>`
-        } else {
-          str += `<a style="background-color:${bg};color:${color}" class="bookmark-item-lacia paper-shadow" href="${item.url}"><div>${item.name || 'NoName'}</div></a>`
-        }
-      } else {
-        str += `<div class="bookmark-item-lacia"></div>`
+    const childBookmarks = bookmarks.filter(item => !!item.parent)
+    const childList = new Map()
+    childBookmarks.forEach(item => {
+      if (!childList.has(item.parent)) {
+        childList.set(item.parent, [])
       }
+      childList.get(item.parent).push(item)
+    })
+    parentIds = [...childList.keys()]
+    const parentList = bookmarks.filter(item => !item.parent)
+
+    const makeList = (bkmks) => {
+      const indexList = bkmks.map(item => item.index)
+      const maxIndex = Math.max(...indexList)
+      const list = new Array(maxIndex > 100 ? 100 : maxIndex).fill({})
+      indexList.forEach((tag, idx) => {
+        list[tag - 1] = bkmks[idx]
+      })
+      return list
+    }
+
+    const renderHtml = (list, parent) => {
+      let str = ''
+      list.forEach(item => {
+        if (item.url) {
+          const bg = item.background || '#297fc8'
+          const color = item.color || fontColor(bg)
+          let className = `bookmark-item-lacia paper-shadow${parent ? ` bookmark-item-${parent} bookmark-item-child` : ''}`
+          if (childList.has(item.index) && !parent) {
+            className += ` bookmark-item-parent-${item.index}`
+          }
+          if (item.url === 'reload') {
+            str += `<a style="background-color:${bg};color:${color}" class="${className}" onclick="location.reload()"><div>${item.name || 'NoName'}</div></a>`
+          } else if (item.url === 'back') {
+            str += `<a style="background-color:${bg};color:${color}" class="${className}" onclick="history.back()"><div>${item.name || 'NoName'}</div></a>`
+          } else if (item.url === 'forward') {
+            str += `<a style="background-color:${bg};color:${color}" class="${className}" onclick="history.forward()"><div>${item.name || 'NoName'}</div></a>`
+          } else {
+            str += `<a style="background-color:${bg};color:${color}" class="${className}" href="${item.url}"><div>${item.name || 'NoName'}</div></a>`
+          }
+        } else {
+          str += `<div class="bookmark-item-lacia${parent ? ` bookmark-item-${parent} bookmark-item-child` : ''}"></div>`
+        }
+      })
+      return str
+    }
+
+    html += renderHtml(makeList(parentList), 0)
+    childList.forEach((list, parent) => {
+      html += renderHtml(makeList(list), parent)
     })
   }
 
-  if (!str) {
-    str += `<a style="background-color:${randomColor()};color:#fff" class="bookmark-item-lacia paper-shadow"><div>设置</div></a>`
+  if (!html) {
+    html += `<a style="background-color:${randomColor()};color:#fff" class="bookmark-item-lacia paper-shadow"><div>设置</div></a>`
   }
-  return str
+
+  let css = ''
+  parentIds.forEach(id => {
+    css += `.bookmark-item-parent-${id}:hover ~ .bookmark-item-${id}{display: block;}
+    .bookmark-item-parent-${id}:hover ~ .bookmark-item-lacia {display: none;}
+    .bookmark-item-${id}:hover{display: block;}`
+  })
+  html = `<style>${css}</style>${html}`
+
+  return html
 }
 
 

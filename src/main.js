@@ -71,10 +71,10 @@ const main = () => {
       } catch (e) {
         console.error(e)
       }
-    }, 100)
+    })
   } catch (e) {
     console.error(e)
   }
 }
 
-document.addEventListener('DOMContentLoaded', main)
+window.addEventListener('load', main)

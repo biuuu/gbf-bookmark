@@ -104,6 +104,10 @@ export default function tempalte () {
     <div class="paper-shadow2 ipt-tagmodal-cont"><input id="ipt-index-bookmark" class="ipt-tagmodal" min="1" max="100" type="number"></div>
     </div>
     <div>
+    <span class="label-tagmodal paper-shadow2">父书签</span>
+    <div class="paper-shadow2 ipt-tagmodal-cont"><input id="ipt-parent-bookmark" class="ipt-tagmodal" min="0" max="100" type="number"></div>
+    </div>
+    <div>
     <div class="btn-bookmark paper-shadow2" id="btn-save-tagmodal">保存</div>
     <div class="btn-bookmark paper-shadow2" id="btn-close-tagmodal">取消</div>
     </div>

@@ -52,6 +52,7 @@ export default function () {
   const iptUrl = document.querySelector('#ipt-url-bookmark')
   const iptBgcolor = document.querySelector('#ipt-bgcolor-bookmark')
   const iptIndex = document.querySelector('#ipt-index-bookmark')
+  const iptParent = document.querySelector('#ipt-parent-bookmark')
 
   btnModalClose.addEventListener('click', function () {
     tagModal.classList.remove('bookmark-active')
@@ -64,6 +65,7 @@ export default function () {
     iptUrl.value = location.hash || ''
     iptBgcolor.value = randomColor()
     iptIndex.value = setIndex()
+    iptParent.value = 0
     tagModalStatus.type = 'add'
   })
 
@@ -73,10 +75,11 @@ export default function () {
     if (!url.trim()) return alert('缺少书签地址')
     const background = iptBgcolor.value
     const index = iptIndex.value | 0
+    const parent = iptParent.value | 0
     if (tagModalStatus.type === 'add') {
-      data.list.push({ name, url, background, index })
+      data.list.push({ name, url, background, index, parent })
     } else {
-      data.list[tagModalStatus.index] = { name, url, background, index }
+      data.list[tagModalStatus.index] = { name, url, background, index, parent }
     }
     tagModal.classList.remove('bookmark-active')
     renderAll()
@@ -95,6 +98,7 @@ export default function () {
       iptUrl.value = item.url || ''
       iptBgcolor.value = item.background || randomColor()
       iptIndex.value = item.index || setIndex()
+      iptParent.value = item.parent | 0
     } else if (elemt.classList.contains('delete-tag')) {
       if (!confirm('确定要删除这个书签吗？')) return
       const index = elemt.dataset.index | 0
