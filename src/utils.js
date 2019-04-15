@@ -60,8 +60,8 @@ const renderList = () => {
       childList.get(item.parent).push(item)
     })
     childList.forEach((list, pid) => {
-      const item = parentList.find(item => item.index === pid)
-      list.push(item)
+      const item = parentList.find(obj => obj.index === pid)
+      if (item) list.unshift(item)
     })
     parentIds = [...childList.keys()]
 
@@ -84,13 +84,15 @@ const renderList = () => {
           const bg = item.background || '#297fc8'
           const color = item.color || fontColor(bg)
           let className = `bookmark-item-lacia paper-shadow`
-          if (parent && !item.parent) {
+          if (parent && (!item.parent || item.index === parent)) {
             className += ' bookmark-item-parent'
           }
           if (item.url === 'reload') {
             str += `<a style="background-color:${bg};color:${color}" class="${className}" onclick="location.reload()"><div>${item.name || 'NoName'}</div></a>`
           } else if (item.url === 'back') {
             str += `<a style="background-color:${bg};color:${color}" class="${className}" onclick="history.back()"><div>${item.name || 'NoName'}</div></a>`
+          } else if (item.url === 'none') {
+            str += `<a style="background-color:${bg};color:${color}" class="${className}"><div>${item.name || 'NoName'}</div></a>`
           } else if (item.url === 'forward') {
             str += `<a style="background-color:${bg};color:${color}" class="${className}" onclick="history.forward()"><div>${item.name || 'NoName'}</div></a>`
           } else {
