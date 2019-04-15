@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         碧蓝幻想书签
 // @namespace    https://github.com/biuuu/gbf-bookmark
-// @version      0.2.0
+// @version      0.2.1
 // @description  none
 // @author       biuuu
 // @match        *://game.granbluefantasy.jp/*
@@ -13,48 +13,122 @@
 (function () {
   'use strict';
 
+  var list = [
+  	{
+  		url: "#mypage",
+  		name: "首页",
+  		index: 3,
+  		background: "#297fc8"
+  	},
+  	{
+  		name: "共斗",
+  		url: "#coopraid",
+  		background: "#ffeb3b",
+  		index: 4
+  	},
+  	{
+  		name: "未确认",
+  		url: "#quest/assist/unclaimed",
+  		background: "#8dc3dd",
+  		index: 5
+  	},
+  	{
+  		url: "#quest/assist",
+  		name: "副本列表",
+  		index: 7,
+  		background: "#c96883"
+  	},
+  	{
+  		name: "活动副本",
+  		url: "#quest/assist/event",
+  		background: "#297fc8",
+  		index: 8,
+  		parent: 0
+  	},
+  	{
+  		name: "Fate",
+  		url: "#quest/fate",
+  		background: "#efb983",
+  		index: 9
+  	},
+  	{
+  		url: "#sidestory",
+  		name: "SIDE STORY",
+  		index: 10,
+  		background: "#eee3c8"
+  	},
+  	{
+  		name: "塔罗首页",
+  		url: "#arcarum2",
+  		background: "#259a80",
+  		index: 11,
+  		parent: 0
+  	},
+  	{
+  		name: "收藏的任务",
+  		url: "none",
+  		background: "#b51e22",
+  		index: 14,
+  		parent: 0
+  	},
+  	{
+  		url: "back",
+  		name: "后退",
+  		index: 16,
+  		background: "#FFEB3B"
+  	},
+  	{
+  		url: "reload",
+  		name: "刷新",
+  		index: 18,
+  		background: "#de3a7c"
+  	},
+  	{
+  		name: "欧罗巴",
+  		url: "#quest/supporter/303161/1/0/523",
+  		background: "#efcdce",
+  		index: 11,
+  		parent: 14
+  	},
+  	{
+  		name: "军神",
+  		url: "#quest/supporter/303181/1/0/525",
+  		background: "#20a48f",
+  		index: 12,
+  		parent: 14
+  	},
+  	{
+  		name: "湿婆",
+  		url: "#quest/supporter/303151/1/0/522",
+  		background: "#731dc9",
+  		index: 13,
+  		parent: 14
+  	},
+  	{
+  		name: "神盾",
+  		url: "#quest/supporter/303171/1/0/524",
+  		background: "#d51330",
+  		index: 14,
+  		parent: 14
+  	},
+  	{
+  		name: "梅塔特隆",
+  		url: "#quest/supporter/303191/1/0/526",
+  		background: "#f8fdfe",
+  		index: 15,
+  		parent: 14
+  	},
+  	{
+  		name: "阿凡达",
+  		url: "#quest/supporter/303221/1/0/527",
+  		background: "#400040",
+  		index: 16,
+  		parent: 14
+  	}
+  ];
+
   var data = {
-    list: [{
-      "url": "#mypage",
-      "name": "首页",
-      "index": 3,
-      "background": "#297fc8"
-    }, {
-      "url": "#quest/assist",
-      "name": "副本列表",
-      "index": 7,
-      "background": "#c96883"
-    }, {
-      "url": "#quest/assist/event",
-      "name": "活动副本",
-      "index": 8,
-      "background": "#8dc3dd"
-    }, {
-      "name": "Fate",
-      "url": "#quest/fate",
-      "background": "#efb983",
-      "index": 9
-    }, {
-      "url": "#sidestory",
-      "name": "SIDE STORY",
-      "index": 10,
-      "background": "#eee3c8"
-    }, {
-      "name": "塔罗首页",
-      "url": "#arcarum2",
-      "background": "#5fcd70",
-      "index": 12
-    }, {
-      "url": "back",
-      "name": "后退",
-      "index": 16,
-      "background": "#FFEB3B"
-    }, {
-      "url": "reload",
-      "name": "刷新",
-      "index": 18,
-      "background": "#de3a7c"
-    }]
+    list: list
   };
 
   var getLocalData = function getLocalData() {
@@ -268,10 +342,10 @@
         childList.get(item.parent).push(item);
       });
       childList.forEach(function (list, pid) {
-        var item = parentList.find(function (item) {
-          return item.index === pid;
+        var item = parentList.find(function (obj) {
+          return obj.index === pid;
         });
-        list.push(item);
+        if (item) list.unshift(item);
       });
       parentIds = _toConsumableArray(childList.keys());
 
@@ -297,7 +371,7 @@
             var color = item.color || fontColor(bg);
             var className = "bookmark-item-lacia paper-shadow";
 
-            if (parent && !item.parent) {
+            if (parent && (!item.parent || item.index === parent)) {
               className += ' bookmark-item-parent';
             }
 
@@ -305,6 +379,8 @@
               str += "<a style=\"background-color:".concat(bg, ";color:").concat(color, "\" class=\"").concat(className, "\" onclick=\"location.reload()\"><div>").concat(item.name || 'NoName', "</div></a>");
             } else if (item.url === 'back') {
               str += "<a style=\"background-color:".concat(bg, ";color:").concat(color, "\" class=\"").concat(className, "\" onclick=\"history.back()\"><div>").concat(item.name || 'NoName', "</div></a>");
+            } else if (item.url === 'none') {
+              str += "<a style=\"background-color:".concat(bg, ";color:").concat(color, "\" class=\"").concat(className, "\"><div>").concat(item.name || 'NoName', "</div></a>");
             } else if (item.url === 'forward') {
               str += "<a style=\"background-color:".concat(bg, ";color:").concat(color, "\" class=\"").concat(className, "\" onclick=\"history.forward()\"><div>").concat(item.name || 'NoName', "</div></a>");
             } else {
