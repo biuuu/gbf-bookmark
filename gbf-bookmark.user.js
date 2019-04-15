@@ -68,7 +68,7 @@
   		name: "收藏的任务",
   		url: "none",
   		background: "#b51e22",
-  		index: 14,
+  		index: 12,
   		parent: 0
   	},
   	{
@@ -87,43 +87,43 @@
   		name: "欧罗巴",
   		url: "#quest/supporter/303161/1/0/523",
   		background: "#efcdce",
-  		index: 11,
-  		parent: 14
+  		index: 9,
+  		parent: 12
   	},
   	{
   		name: "军神",
   		url: "#quest/supporter/303181/1/0/525",
   		background: "#20a48f",
-  		index: 12,
-  		parent: 14
+  		index: 10,
+  		parent: 12
   	},
   	{
   		name: "湿婆",
   		url: "#quest/supporter/303151/1/0/522",
   		background: "#731dc9",
-  		index: 13,
-  		parent: 14
+  		index: 11,
+  		parent: 12
   	},
   	{
   		name: "神盾",
   		url: "#quest/supporter/303171/1/0/524",
   		background: "#d51330",
-  		index: 14,
-  		parent: 14
+  		index: 12,
+  		parent: 12
   	},
   	{
   		name: "梅塔特隆",
   		url: "#quest/supporter/303191/1/0/526",
   		background: "#f8fdfe",
-  		index: 15,
-  		parent: 14
+  		index: 13,
+  		parent: 12
   	},
   	{
   		name: "阿凡达",
   		url: "#quest/supporter/303221/1/0/527",
   		background: "#400040",
-  		index: 16,
-  		parent: 14
+  		index: 14,
+  		parent: 12
   	}
   ];
 
