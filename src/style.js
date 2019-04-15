@@ -20,6 +20,44 @@ const css = `
 #gbf-bookmark-lacia.align-right-bookmark .bookmark-item-lacia {
   text-align: right;
 }
+.bookmark-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.bookmark-container-sub {
+  z-index: 2;
+}
+.bookmark-container-sub .bookmark-item-lacia {
+  opacity: 0;
+  pointer-events: none;
+}
+.bookmark-container-sub .bookmark-item-lacia.bookmark-item-parent {
+  pointer-events: auto;
+}
+.bookmark-container-sub:hover .bookmark-item-lacia {
+  opacity: 1;
+  pointer-events: auto;
+}
+.bookmark-container-sub:hover ~ .bookmark-container {
+  opacity: 0;
+}
+.bookmark-container-sub:hover ~ .bookmark-container-sub {
+  pointer-events: none;
+}
+.bookmark-container-sub .bookmark-item-lacia:not(a) {
+  width: 10px;
+  padding: 0;
+}
+#gbf-bookmark-lacia.size-1 .bookmark-container-sub .bookmark-item-lacia:not(a) {
+  width: 10px;
+  padding: 0;
+}
+#gbf-bookmark-lacia.size-3 .bookmark-container-sub .bookmark-item-lacia:not(a) {
+  width: 10px;
+  padding: 0;
+}
 #show-setting-bookmark {
   position: fixed;
   top: 0;
@@ -60,7 +98,7 @@ const css = `
   line-height: 30px;
   padding-left: 11px;
 }
-#gbf-bookmark-lacia.size-1 a.bookmark-item-lacia {
+#gbf-bookmark-lacia.size-1 .bookmark-item-lacia {
   width: 69px;
   font-size: 11px;
 }
@@ -70,12 +108,12 @@ const css = `
   line-height: 20px;
   padding-left: 6px;
 }
-#gbf-bookmark-lacia.size-3 a.bookmark-item-lacia {
+#gbf-bookmark-lacia.size-3 .bookmark-item-lacia {
   width: 44px;
   font-size: 7px;
 }
 .bookmark-item-lacia {
-  width: 10px;
+  width: 52px;
   height: 24px;
   line-height: 24px;
   padding-left: 8px;
@@ -277,6 +315,16 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
   overflow-y: auto;
   max-height: 320px;
 }
+#bookmark-cont::-webkit-scrollbar {
+  display: block;
+  width: 4px;
+  background: #e4eaa4;
+  border-radius: 2px;
+}
+#bookmark-cont::-webkit-scrollbar-thumb {
+  background: #8BC34A;
+  border-radius: 2px;
+}
 .setting-box-bookmark .bookmark-tag {
   padding: 4px 12px;
   margin: 4px;
@@ -296,6 +344,7 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
   bottom: 2px;
   font-size: 6px;
   padding: 0 2px;
+  text-decoration: underline;
 }
 .setting-box-bookmark .edit-tag, .setting-box-bookmark .delete-tag {
   position: absolute;
