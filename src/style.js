@@ -113,7 +113,7 @@ const css = `
   font-size: 7px;
 }
 .bookmark-item-lacia {
-  width: 52px;
+  width: 42px;
   height: 24px;
   line-height: 24px;
   padding-left: 8px;
