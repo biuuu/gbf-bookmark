@@ -187,9 +187,9 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
   left: auto;
   right: -65px;
 }
-#gbf-bookmark-lacia.bookmark-right:hover {
-  left: auto;
+#gbf-bookmark-lacia.bookmark-right:not(.full-bookmark):hover {
   right: 0;
+  left: auto;
 }
 #gbf-bookmark-lacia.bookmark-right .bookmark-item-lacia {
   float: right;
