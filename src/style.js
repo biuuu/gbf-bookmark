@@ -10,6 +10,7 @@ const css = `
   left: -65px;
   pointer-events: none;
   transition: left 0.1s, right 0.1s;
+  display: flex;
 }
 #gbf-bookmark-lacia.align-left-bookmark .bookmark-item-lacia {
   text-align: left;
@@ -36,6 +37,9 @@ const css = `
 .bookmark-container-sub .bookmark-item-lacia.bookmark-item-parent {
   pointer-events: auto;
 }
+.bookmark-container-sub:hover {
+  order: -1;
+}
 .bookmark-container-sub:hover .bookmark-item-lacia {
   opacity: 1;
   pointer-events: auto;
@@ -45,13 +49,14 @@ const css = `
 }
 .bookmark-container-sub:hover ~ .bookmark-container-sub {
   pointer-events: none;
+  display: none;
 }
 .bookmark-container-sub .bookmark-item-lacia:not(a) {
-  width: 10px;
+  width: 15px;
   padding: 0;
 }
 #gbf-bookmark-lacia.size-1 .bookmark-container-sub .bookmark-item-lacia:not(a) {
-  width: 10px;
+  width: 20px;
   padding: 0;
 }
 #gbf-bookmark-lacia.size-3 .bookmark-container-sub .bookmark-item-lacia:not(a) {
@@ -64,7 +69,7 @@ const css = `
   left: 0;
   width: 10px;
   height: 10px;
-  z-index: 10000000;
+  z-index: 1000000;
   cursor: pointer;
 }
 #gbf-bookmark-lacia.bookmark-remove-anime,
