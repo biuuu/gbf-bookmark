@@ -316,9 +316,32 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
   display: block;
 }
 #bookmark-cont {
-  margin: 4px -4px;
+  margin: 4px 0;
+  margin-right: -4px;
   overflow-y: auto;
   max-height: 320px;
+}
+#bookmark-cont .box-tag {
+  border: 1px solid #9E9E9E;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  margin-right: 4px;
+  padding: 4px;
+}
+#bookmark-cont .sub-index {
+  font-size: 10px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.1);
+  width: 16px;
+  height: 16px;
+  display: flex;
+  z-index: 1;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  right: -1px;
+  top: -1px;
 }
 #bookmark-cont::-webkit-scrollbar {
   display: block;
@@ -333,7 +356,6 @@ a.bookmark-item-lacia:active:before, a.bookmark-item-lacia:active:after {
 .setting-box-bookmark .bookmark-tag {
   padding: 4px 12px;
   margin: 4px;
-  float: left;
   font-size: 10px;
 }
 .setting-box-bookmark .idx-tag {

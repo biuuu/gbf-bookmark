@@ -31,17 +31,58 @@ const randomColor = () => {
   return colors[Math.floor(Math.random() * colors.length)]
 }
 
+const tagList = (list) => {
+  const _list = []
+  const temp = [...list]
+  temp.forEach((item, index) => {
+    item._index = index
+  })
+  const sl = temp.sort((prev, next) => {
+    return prev.index - next.index
+  })
+  const pList = sl.filter(item => !item.parent)
+  _list.push(pList)
+  const sList = sl.filter(item => item.parent).sort((prev, next) => prev.parent - next.parent)
+  const subMap = new Map()
+  sList.forEach(item => {
+    const pid = parseInt(item.parent, 10)
+    if (!subMap.has(pid)) {
+      const pItem = pList.find(pitem => pitem.index === pid) || {}
+      const bg = pItem.background || '#9E9E9E'
+      const fc = fontColor(bg)
+      subMap.set(pid, { index: _list.length, color: fc, bg: bg })
+      _list.push([item])
+    } else {
+      const { index } = subMap.get(pid)
+      _list[index].push(item)
+    }
+  })
+  return [_list, subMap]
+}
+
+const tagHtml = (item, index) => {
+  const bg = item.background || '#297fc8'
+  const color = item.color || fontColor(bg)
+  return `<div style="background-color:${bg};color:${color}"
+  class="paper-shadow2 bookmark-tag"><div class="idx-tag"><span>${item.index}</span></div>
+  <span class="edit-tag" data-index="${item._index}">改</span><span class="delete-tag" data-index="${item._index}">删</span>
+  ${item.name || 'NoName'}</div>`
+}
 const renderTag = () => {
   let html = ''
-  data.list.forEach((item, index) => {
-    const bg = item.background || '#297fc8'
-    const color = item.color || fontColor(bg)
-    html += `<div style="background-color:${bg};color:${color}"
-    class="paper-shadow2 bookmark-tag"><div class="idx-tag"><span>${item.index}</span></div>
-    ${item.parent ? `<span class="idx-tag-parent">${item.parent}</span>` : ''}
-    <span class="edit-tag" data-index="${index}">改</span><span class="delete-tag" data-index="${index}">删</span>
-    ${item.name || 'NoName'}</div>`
+  const [list, subMap] = tagList(data.list)
+  list[0].forEach((item, index) => {
+    html += `${tagHtml(item, index)}`
   })
+  html = `<div class="box-tag">${html}</div>`
+  for (let [pid, obj] of subMap) {
+    const { index, color, bg } = obj
+    html += `<div class="box-tag" style="border-color:${bg}"><span class="sub-index" style="color:${color};background:${bg}">${pid}</span>`
+    list[index].forEach(item => {
+      html += `${tagHtml(item, index)}`
+    })
+    html += `</div>`
+  }
   return html
 }
 
