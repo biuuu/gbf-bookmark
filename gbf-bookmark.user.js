@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         碧蓝幻想书签
 // @namespace    https://github.com/biuuu/gbf-bookmark
-// @version      0.2.5
+// @version      0.2.6
 // @description  none
 // @author       biuuu
 // @match        *://game.granbluefantasy.jp/*
@@ -515,6 +515,8 @@
               str += "<a style=\"background-color:".concat(bg, ";color:").concat(color, "\" class=\"").concat(className, "\" onclick=\"location.reload()\"><div>").concat(item.name || 'NoName', "</div></a>");
             } else if (item.url === 'back') {
               str += "<a style=\"background-color:".concat(bg, ";color:").concat(color, "\" class=\"").concat(className, "\" onclick=\"history.back()\"><div>").concat(item.name || 'NoName', "</div></a>");
+            } else if (item.url === 'back&forward') {
+              str += "<a style=\"background-color:".concat(bg, ";color:").concat(color, "\" class=\"").concat(className, "\" onclick=\"history.back();setTimeout(() => history.forward(), 100)\"><div>").concat(item.name || 'NoName', "</div></a>");
             } else if (item.url === 'none') {
               str += "<a style=\"background-color:".concat(bg, ";color:").concat(color, "\" class=\"").concat(className, "\"><div>").concat(item.name || 'NoName', "</div></a>");
             } else if (item.url === 'forward') {
