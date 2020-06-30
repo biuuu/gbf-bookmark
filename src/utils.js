@@ -132,6 +132,8 @@ const renderList = () => {
             str += `<a style="background-color:${bg};color:${color}" class="${className}" onclick="location.reload()"><div>${item.name || 'NoName'}</div></a>`
           } else if (item.url === 'back') {
             str += `<a style="background-color:${bg};color:${color}" class="${className}" onclick="history.back()"><div>${item.name || 'NoName'}</div></a>`
+          } else if (item.url === 'back&forward') {
+            str += `<a style="background-color:${bg};color:${color}" class="${className}" onclick="history.back();setTimeout(() => history.forward(), 100)"><div>${item.name || 'NoName'}</div></a>`
           } else if (item.url === 'none') {
             str += `<a style="background-color:${bg};color:${color}" class="${className}"><div>${item.name || 'NoName'}</div></a>`
           } else if (item.url === 'forward') {
