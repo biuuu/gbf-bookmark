@@ -77,4 +77,9 @@ const main = () => {
   }
 }
 
-window.addEventListener('load', main)
+let win = (window.unsafeWindow || window)
+if (win.document.readyState != 'loading') {
+  main()
+} else {
+  win.addEventListener('DOMContentLoaded', main)
+}
