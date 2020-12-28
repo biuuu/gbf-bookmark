@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         碧蓝幻想书签
 // @namespace    https://github.com/biuuu/gbf-bookmark
-// @version      0.2.6
+// @version      0.2.7
 // @description  none
 // @author       biuuu
 // @match        *://game.granbluefantasy.jp/*
@@ -851,6 +851,12 @@
     }
   };
 
-  window.addEventListener('load', main);
+  var win = window.unsafeWindow || window;
+
+  if (win.document.readyState != 'loading') {
+    main();
+  } else {
+    win.addEventListener('DOMContentLoaded', main);
+  }
 
 }());
