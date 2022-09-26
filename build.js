@@ -22,7 +22,7 @@ module.exports = {
       exclude: 'node_modules/**',
       presets: [['@babel/preset-env', {
         modules: false,
-        targets: 'since 2015'
+        targets: 'last 2 iOS versions'
       }]]
     })
   ],

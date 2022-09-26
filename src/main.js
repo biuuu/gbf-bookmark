@@ -26,6 +26,31 @@ const parentElmt = () => {
   return document.body
 }
 
+const sleep = (time) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, time)
+  })
+}
+
+const waitDeviceRatio = async () => {
+  if (typeof deviceRatio === 'number') {
+    return deviceRatio
+  } else {
+    await sleep(100)
+    return await waitDeviceRatio()
+  }
+}
+
+const applyRatio = async () => {
+  await waitDeviceRatio()
+  const elemt1 = document.getElementById('show-setting-bookmark')
+  const elemt2 = document.getElementById('gbf-bookmark-lacia')
+  const elemt3 = document.getElementById('gbf-bookmark-setting')
+  elemt1.style.zoom = deviceRatio
+  elemt2.style.zoom = deviceRatio
+  elemt3.style.zoom = deviceRatio
+}
+
 const main = () => {
   try {
     const html = template(data.list)
@@ -60,18 +85,7 @@ const main = () => {
     } else {
       delayHide()
     }
-    setTimeout(() => {
-      try {
-        const elemt1 = document.getElementById('show-setting-bookmark')
-        const elemt2 = document.getElementById('gbf-bookmark-lacia')
-        const elemt3 = document.getElementById('gbf-bookmark-setting')
-        elemt1.style.zoom = deviceRatio
-        elemt2.style.zoom = deviceRatio
-        elemt3.style.zoom = deviceRatio
-      } catch (e) {
-        console.error(e)
-      }
-    })
+    applyRatio()
   } catch (e) {
     console.error(e)
   }
